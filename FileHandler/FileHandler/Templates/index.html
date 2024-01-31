@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<title>Home</title>
+{% endblock %}
+{% block body %}
+<div class="text-center mt-4 bg-slate-600 text-white font-bold h-[30px] text-xl">
+    <a href="{% url 'upload_document' %}">Upload Document</a>
+</div>
+    {% for file in files %}
+        {% if file.document %}
+            <div class="flex justify-between p-4 md:p-6 lg:p-8">
+                <div>
+                    <img class="w-[40px] sm:w-[40px] mt-2 md:w-[70px] lg:w-[100px] xl:w-[150px]" src="{% static 'fileimage.png' %}" alt="png file">
+                </div>
+                <div>
+                    <p class="mt-4 md:mt-6 lg:mt-6 xl:mt-6">{{ file.document.name }}   {{ file.document.size|filesizeformat }}</p>
+                </div>
+                <div>
+                    <a href="{{ file.document.url }}" download><img class="w-[17px] md:w-[22px] lg:w-[25px] xl:w-[30px] mt-5 md:mt-5 :mt-6 xl:mt-8" src="{% static 'download.png' %}" alt="Download"></a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

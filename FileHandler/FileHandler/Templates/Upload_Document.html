@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<title>Upload Document</title>
+{% endblock %}
+{% block body %}
+
+<div class="text-center mt-[40px] md:mt-[60px] lg:mt-[80px] xl:mt-[100px]">
+    <h2 class="text-xl font-bold">Upload Document</h2>
+    <a href="/" class="bg-slate-700 text-white">Go Back</a>
+    <form class="mt-[40px] md:mt-[60px] lg:mt-[60px] xl:mt-[60px]" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit" class="bg-slate-700 text-white">Upload</button>
+    </form>
+</div>
+
+{% endblock %}
